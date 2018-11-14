@@ -146,7 +146,7 @@ class Advanced_Custom_Fields_Partials {
 			<?php endif; ?>
 				<div class="<?php echo esc_attr( $container ); ?>" id="" tabindex="-1">
 					<div class="row <?php echo ( $css_classes_page_header_row_css ? $css_classes_page_header_row_css : 'align-items-center justify-content-center' ); ?>">
-						<div class="col-12 text-center <?php echo ( $css_classes_page_header_column_css ? $css_classes_page_header_column_css : 'col-md-8 col-lg-7 col-xl-6' ); ?>">
+						<div class="col-12 text-center <?php echo ( $css_classes_page_header_column_css ? $css_classes_page_header_column_css : 'col-md-8 col-lg-7 col-xl-7' ); ?>">
 							<header class="page-header">
 								<?php if ( $this->get_field( 'page_title' ) ) { ?>
 									<h1 class="page-title"><?php echo $this->get_field( 'page_title', false ); ?></h1>
@@ -217,6 +217,7 @@ class Advanced_Custom_Fields_Partials {
 							$link_target  = '_self';
 
 							if ( $use_custom_content ) {
+								$post_id       = $i;
 								$card_img_id   = get_post_meta( get_the_ID(), $this->repeater_field . '_' . $key . '_cards_' . $i . '_card_image', true );
 								$card_img_src  = wp_get_attachment_image_src( $card_img_id, 'large' );
 								$card_img_top  = $card_img_src[0];
@@ -246,8 +247,10 @@ class Advanced_Custom_Fields_Partials {
 							?>
 							<article class="card" id="post-<?php echo $post_id; ?>">
 								<?php if ( $card_img_top ) : ?>
-									<div class="card-header">
-										<img src="<?php echo $card_img_top; ?>" alt="" class="object-fit-cover card-img-top">
+									<div class="card-header" data-img="<?php echo $card_img_top; ?>">
+										<div class="card-header__img-wrapper">
+											<img src="<?php echo $card_img_top; ?>" alt="" class="object-fit-cover card-img-top">
+										</div>
 									</div>
 								<?php endif; ?>
 								<div class="card-body">
@@ -262,6 +265,80 @@ class Advanced_Custom_Fields_Partials {
 							</article><!-- #post-## -->
 						<?php } ?>
 					</div>
+				</div>
+			</section>
+			<?php
+
+			echo ob_get_clean();
+
+		endif;
+
+		return;
+
+	}
+
+	/**
+	 * Repeater Rows
+	 *
+	 * The following methods are designed to be called from within the 1page_builder1
+	 * repeater included in certain template files.
+	 */
+
+	/**
+	 * The ACF partial template for Posts Card Decks
+	 */
+	public function acf_partial_related_posts() {
+
+		$key = $this->key;
+
+		$rand_str          = $this->rand_str();
+
+		$related_posts     = $this->get_field( 'related_posts', false );
+
+		if ( $related_posts > 0 ): 
+
+			ob_start();
+
+			?>
+			<section class="section-card-deck wrapper">
+				<h2><?php _e( 'Related Posts' ); ?></h2>
+				<div class="card-deck" data-cols="<?php echo $related_posts; ?>">
+					<?php for ($i = 0; $i < $related_posts; $i++) {
+
+						$post_id       = get_post_meta( get_the_ID(), 'related_posts_' . $i . '_related_post', true );
+						$post          = get_post( $post_id );
+
+						$card_img_top  = false;
+						if ( has_post_thumbnail( $post_id ) ) {
+							$card_img_top = get_the_post_thumbnail_url( $post_id, 'large' );
+						}
+
+						$card_title    = get_the_title( $post_id );
+
+						$card_body     = ( has_excerpt( $post_id ) ? get_the_excerpt( $post_id ) : apply_filters( 'the_content', html_entity_decode( wp_trim_words( $post->post_content ) ) ) );
+
+						$link_url      = get_permalink( $post_id );
+
+					?>
+						<article class="card" id="post-<?php echo $post_id; ?>">
+							<?php if ( $card_img_top ) : ?>
+								<div class="card-header" data-img="<?php echo $card_img_top; ?>">
+									<div class="card-header__img-wrapper">
+										<img src="<?php echo $card_img_top; ?>" alt="" class="object-fit-cover card-img-top">
+									</div>
+								</div>
+							<?php endif; ?>
+							<div class="card-body">
+								<?php if ( $card_title ) { ?>
+									<h3 class="card-title"><?php echo $card_title; ?></h3>
+								<?php } ?>
+								<?php echo $card_body; ?>
+							</div><!-- .card-body -->
+							<div class="card-footer text-center">
+								<a href="<?php echo $link_url; ?>" class="btn btn-secondary" target="<?php echo $link_target; ?>"><?php _e( 'Read More' ); ?></a>
+							</div><!-- .card-footer -->
+						</article><!-- #post-## -->
+					<?php } ?>
 				</div>
 			</section>
 			<?php
@@ -315,7 +392,9 @@ class Advanced_Custom_Fields_Partials {
 			<section class="section-row-w-columns <?php echo ( $split_background ? 'section-split-cols' : '' ); ?> <?php echo ( $section_color ? 'bg-' . $section_color : '' ); ?> <?php echo ( esc_html( $section_css_class ) ); ?>" id="<?php echo ( $section_id ? $section_id : '' ); ?>">
 				<a class="anchor" name="anchor-<?php echo $section_id; ?>"></a>
 				<?php if ( $background_image ) { ?>
-					<img src="<?php echo $section_bg_img[0]; ?>" class="object-fit-cover section-background-image">
+					<div class="object-fit__img-wrapper" data-img="<?php echo $section_bg_img[0]; ?>">
+						<img src="<?php echo $section_bg_img[0]; ?>" class="object-fit-cover section-background-image">
+					</div>
 					<div class="background-image-overlay">
 				<?php } ?>
 					<?php if ( $split_background ) { ?>
@@ -421,8 +500,9 @@ class Advanced_Custom_Fields_Partials {
 						$provided_by  = get_post_meta( $post_id, 'testimonial_provided_by', true );
 						$job_title    = get_post_meta( $post_id, 'testimonial_job_title', true );
 						$dealership   = get_post_meta( $post_id, 'testimonial_dealership', true );
+						$image_str    = ( $post_image ? '<span class="bf-left">' . $post_image . '</span>' : '' );
 						$citation     = ( $job_title || $dealership ) ? sprintf( '<cite title="Source Title">%1$s %2$s</cite>', $job_title, ( $dealership ? ' at ' . $dealership : '' ) ) : '';
-						$slide_content[] = sprintf( '<div class="carousel-item %1$s"><blockquote class="blockquote">%2$s<footer class="blockquote-footer">%3$s %4$s %5$s</footer></blockquote></div>', $active, $post_content, $post_image, $provided_by, $citation );
+						$slide_content[] = sprintf( '<div class="carousel-item %1$s"><blockquote class="blockquote">%2$s<footer class="blockquote-footer">%3$s<span class="bf-right">%4$s %5$s</span></footer></blockquote></div>', $active, $post_content, $image_str, $provided_by, $citation );
 					} else {
 						$slide_content[] = sprintf( '<div class="carousel-item %1$s">%2$s</div>', $active, $post_content );
 					}
@@ -448,7 +528,7 @@ class Advanced_Custom_Fields_Partials {
 					<?php } ?>
 					<div class="row justify-content-center">
 						<div class="col-12 col-md-10 col-lg-9">
-							<div id="carousel_<?php echo $rand_str; ?>" class="carousel slide carousel_<?php echo $rand_str; ?>" data-ride="false" data-interval="<?php echo ( $interval ? $interval : false ); ?>">
+							<div id="carousel_<?php echo $rand_str; ?>" class="carousel carousel_<?php echo $rand_str; ?>" data-ride="false" data-interval="<?php echo ( $interval ? $interval : false ); ?>">
 								<div class="carousel-inner text-center"><?php echo implode( '', $slide_content ); ?></div>
 								<?php if ( $show_indicators ) { ?>
 									<ol class="carousel-indicators">

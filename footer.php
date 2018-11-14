@@ -30,7 +30,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					<?php } else { ?>
 
-						<img src="<?php echo wp_get_attachment_url( get_theme_mod( 'procede_footer_logo' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" class="mb-1"/>
+						<img src="<?php echo wp_get_attachment_url( get_theme_mod( 'procede_footer_logo' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" class="mb-1 footer-logo"/>
 
 					<?php } ?>
 

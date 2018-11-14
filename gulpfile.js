@@ -20,6 +20,7 @@ var cleanCSS = require( 'gulp-clean-css' );
 var gulpSequence = require( 'gulp-sequence' );
 var replace = require( 'gulp-replace' );
 var autoprefixer = require( 'gulp-autoprefixer' );
+var modernizr = require( 'gulp-modernizr' );
 
 // Configuration file to keep your code DRY
 var cfg = require( './gulpconfig.json' );
@@ -140,17 +141,21 @@ gulp.task( 'scripts', function() {
         // End - All BS4 stuff
 
         paths.dev + '/js/skip-link-focus-fix.js',
+        // Modernizr
+        paths.dev + '/js/modernizr-custom.js',
 
         // Adding currently empty javascript file to add on for your own themes´ customizations
         // Please add any customizations to this .js file only!
         paths.dev + '/js/child-theme.js'
     ];
   gulp.src( scripts )
+    // .pipe( modernizr(paths.dev + '/js/child-theme.js') )
     .pipe( concat( 'child-theme.min.js' ) )
     .pipe( uglify() )
     .pipe( gulp.dest( paths.js ) );
 
   gulp.src( scripts )
+    // .pipe( modernizr(paths.dev + '/js/child-theme.js') )
     .pipe( concat( 'child-theme.js' ) )
     .pipe( gulp.dest( paths.js ) );
 });

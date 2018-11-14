@@ -42,9 +42,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="col-12 col-md-auto">
 				<span class="social-icons">
 					<a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_permalink(); ?>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-					<a href="https://www.youtube.com/channel/UCLV7Lu6pQ5bD9UaSvTYTMBg" target="_blank"><i class="fab fa-youtube"></i></a>
-					<a href="https://twitter.com/intent/tweet?text=<?php echo urlencode( get_the_title() ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
-					<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i></a>
+					<!-- <a href="https://www.youtube.com/channel/UCLV7Lu6pQ5bD9UaSvTYTMBg" target="_blank"><i class="fab fa-youtube"></i></a> -->
+					<a href="https://twitter.com/intent/tweet?text=<?php echo urlencode( get_the_title() ); ?>&amp;url=<?php echo urlencode( get_permalink() ); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
+					<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode( get_permalink() ); ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-f"></i></a>
 				</span>
 			</div>
 

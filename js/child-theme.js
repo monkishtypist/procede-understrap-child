@@ -3977,6 +3977,9 @@
 	}
 })();
 
+/*! modernizr 3.6.0 (Custom Build) | MIT *
+ * https://modernizr.com/download/?-objectfit-setclasses !*/
+!function(e,n,t){function r(e,n){return typeof e===n}function o(){var e,n,t,o,i,s,a;for(var l in C)if(C.hasOwnProperty(l)){if(e=[],n=C[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(o=r(n.fn,"function")?n.fn():n.fn,i=0;i<e.length;i++)s=e[i],a=s.split("."),1===a.length?Modernizr[a[0]]=o:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=o),h.push((o?"":"no-")+a.join("-"))}}function i(e){var n=_.className,t=Modernizr._config.classPrefix||"";if(w&&(n=n.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),w?_.className.baseVal=n:_.className=n)}function s(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function a(e,n){return!!~(""+e).indexOf(n)}function l(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):w?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function f(e,n){return function(){return e.apply(n,arguments)}}function u(e,n,t){var o;for(var i in e)if(e[i]in n)return t===!1?e[i]:(o=n[e[i]],r(o,"function")?f(o,t||n):o);return!1}function p(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function c(n,t,r){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,n,t);var i=e.console;if(null!==o)r&&(o=o.getPropertyValue(r));else if(i){var s=i.error?"error":"log";i[s].call(i,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!t&&n.currentStyle&&n.currentStyle[r];return o}function d(){var e=n.body;return e||(e=l(w?"svg":"body"),e.fake=!0),e}function m(e,t,r,o){var i,s,a,f,u="modernizr",p=l("div"),c=d();if(parseInt(r,10))for(;r--;)a=l("div"),a.id=o?o[r]:u+(r+1),p.appendChild(a);return i=l("style"),i.type="text/css",i.id="s"+u,(c.fake?c:p).appendChild(i),c.appendChild(p),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(n.createTextNode(e)),p.id=u,c.fake&&(c.style.background="",c.style.overflow="hidden",f=_.style.overflow,_.style.overflow="hidden",_.appendChild(c)),s=t(p,e),c.fake?(c.parentNode.removeChild(c),_.style.overflow=f,_.offsetHeight):p.parentNode.removeChild(p),!!s}function v(n,r){var o=n.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(p(n[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+p(n[o])+":"+r+")");return i=i.join(" or "),m("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==c(e,null,"position")})}return t}function y(e,n,o,i){function f(){p&&(delete P.style,delete P.modElem)}if(i=r(i,"undefined")?!1:i,!r(o,"undefined")){var u=v(e,o);if(!r(u,"undefined"))return u}for(var p,c,d,m,y,g=["modernizr","tspan","samp"];!P.style&&g.length;)p=!0,P.modElem=l(g.shift()),P.style=P.modElem.style;for(d=e.length,c=0;d>c;c++)if(m=e[c],y=P.style[m],a(m,"-")&&(m=s(m)),P.style[m]!==t){if(i||r(o,"undefined"))return f(),"pfx"==n?m:!0;try{P.style[m]=o}catch(h){}if(P.style[m]!=y)return f(),"pfx"==n?m:!0}return f(),!1}function g(e,n,t,o,i){var s=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+b.join(s+" ")+s).split(" ");return r(n,"string")||r(n,"undefined")?y(a,n,o,i):(a=(e+" "+j.join(s+" ")+s).split(" "),u(a,n,t))}var h=[],C=[],S={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){C.push({name:e,fn:n,options:t})},addAsyncTest:function(e){C.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=S,Modernizr=new Modernizr;var _=n.documentElement,w="svg"===_.nodeName.toLowerCase(),x="Moz O ms Webkit",b=S._config.usePrefixes?x.split(" "):[];S._cssomPrefixes=b;var E=function(n){var r,o=prefixes.length,i=e.CSSRule;if("undefined"==typeof i)return t;if(!n)return!1;if(n=n.replace(/^@/,""),r=n.replace(/-/g,"_").toUpperCase()+"_RULE",r in i)return"@"+n;for(var s=0;o>s;s++){var a=prefixes[s],l=a.toUpperCase()+"_"+r;if(l in i)return"@-"+a.toLowerCase()+"-"+n}return!1};S.atRule=E;var j=S._config.usePrefixes?x.toLowerCase().split(" "):[];S._domPrefixes=j;var z={elem:l("modernizr")};Modernizr._q.push(function(){delete z.elem});var P={style:z.elem.style};Modernizr._q.unshift(function(){delete P.style}),S.testAllProps=g;var N=S.prefixed=function(e,n,t){return 0===e.indexOf("@")?E(e):(-1!=e.indexOf("-")&&(e=s(e)),n?g(e,n,t):g(e,"pfx"))};Modernizr.addTest("objectfit",!!N("objectFit"),{aliases:["object-fit"]}),o(),i(h),delete S.addTest,delete S.addAsyncTest;for(var T=0;T<Modernizr._q.length;T++)Modernizr._q[T]();e.Modernizr=Modernizr}(window,document);
 /**
  * Nav Fix for Dropdown Gaps (Bootstrap)
  *
@@ -3984,6 +3987,10 @@
  * has a gap from its parent nav item. This adds a slight delay
  * to allow the cursor to cross the gap before the dropdown is
  * closed.
+ *
+ * Nav fix to hide menu on #anchor click
+ *
+ * Removes `.show` class from Nav elements on subnav click.
  */
 (function( $ ) {
 	'use strict';
@@ -3995,6 +4002,11 @@
 		.on("mouseover", showDropdown)
 		.on("mouseleave", function(){
 			timer = setTimeout( hideDropdown, 250);
+		});
+
+	$("#main-menu > .nav-item .dropdown-menu .dropdown-item")
+		.on("click", function(){
+			$("#main-menu .show").removeClass("show");
 		});
 
 	function showDropdown() {
@@ -4011,5 +4023,127 @@
 	var navTopH = $('#top-nav').height();
 	var navMainH = $('#main-nav').height();
 	var navHeight = navTopH + navMainH;
-	
+
 })(jQuery);
+
+/**
+ * Set Carousel Item heights
+ *
+ * The following jQuery sets the height of each `.carousel-item` 
+ * to the height of the largest carousel item in the set. This 
+ * prevents unusual resizing issues for dynamic text lengths.
+ */
+(function($) {
+	function setCarouselHeight($carousel) {
+		var id = $carousel.attr("id");
+		var maxCarouselItemHeight = Math.max.apply(null, $carousel.find(".carousel-item").map(function (){
+			return $(this).height();
+		}).get());
+		if(maxCarouselItemHeight > 0){
+			$carousel.find(".carousel-item").each(function(){
+				$(this).css("height", maxCarouselItemHeight);
+			});
+		}
+	}
+	var $carousels = $(".carousel");
+	$carousels.each(function(){
+		setCarouselHeight($(this));
+	});
+	$(window).resize(function(){
+		$carousels.each(function(){
+			$(this).find(".carousel-item").each(function(){
+				$(this).css("height", "");
+			});
+			setCarouselHeight($(this));
+		});
+	});
+
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+		var t = $(e.target).attr("aria-controls");
+		setCarouselHeight($('#'+t).find(".carousel"));
+	});
+})(jQuery);
+
+/**
+ * Modernizr Fix for `object-fit`
+ */
+(function($){
+	$.fn.addImageToWrapperBg = function(){
+		$(this).each(function () {
+			var $container = $(this),
+				imgUrl     = $container.find('img').prop('src');
+			if (imgUrl) {
+				$container
+					.css('backgroundImage', 'url(' + imgUrl + ')')
+					.addClass('compat-object-fit');
+			}  
+		});
+	}
+	if ( ! Modernizr.objectfit ) {
+		$('.card-header__img-wrapper').addImageToWrapperBg();
+		$('.object-fit__img-wrapper').addImageToWrapperBg();
+	}
+})(jQuery);
+
+
+//
+// https://github.com/sukhoi1, 25 Jan 2016
+// bicubic-img-interpolation v0.1.0 jQuery plugin
+
+// jQuery.fn.bicubicImgInterpolation = function(settings) {
+// 	var self = this;
+// 	jQuery(self).each(function() {
+// 		if(this.tagName === "IMG") {
+// 			var src = jQuery(this).attr('src');
+// 			var imgW = this.width;
+// 			var imgH = this.height;
+// 			jQuery(this).after("<canvas style='display: none' width='" + imgW +  "' height='" + imgH + "'></canvas>");
+// 			var can = jQuery(this).next()[0];
+// 			var callback = drawHighResolutionImgThumbnail;
+// 			drawCanvas(can, imgW*6, imgH*6, src, callback, this, settings.crossOrigin);
+// 		}
+// 	});
+
+// 	function drawCanvas(can, imgW, imgH, src, callback, imgEl, crossOrigin) {
+
+// 		var ctx = can.getContext('2d');
+// 		var img = new Image();
+// 		if(crossOrigin) {
+// 			img.setAttribute('crossOrigin', 'anonymous'); //tainted canvases may not be exported chrome, ie will also throw security error
+// 		}
+
+// 		var w = imgW;
+// 		var h = imgH;
+
+// 		img.onload = function() {
+
+// 			// Step it down several times
+// 			var can2 = document.createElement('canvas');
+// 			can2.width = w;
+// 			can2.height = h;
+// 			var ctx2 = can2.getContext('2d');
+
+// 			// Draw it at 1/2 size 3 times (step down three times), making sure we don't overlap it
+// 			ctx2.drawImage(img, 0, 0, w/2, h/2);
+// 			ctx2.drawImage(can2, 0, 0, w/2, h/2, w/2, h/2, w/4, h/4);
+// 			ctx.drawImage(can2, w/2, h/2, w/4, h/4, 0, 0, w/6, h/6);
+// 			if(callback) {
+// 				callback(can, this.src, imgEl);
+// 			}
+// 		};
+
+// 		img.src = src;
+// 	};
+
+// 	function drawHighResolutionImgThumbnail(can, attrSrc, imgEl) {
+// 		jQuery(imgEl).attr('src', can.toDataURL("image/png"));
+// 		jQuery(imgEl).attr('data-src', attrSrc);
+// 	};
+// };
+
+// jQuery( document ).ready(function() {
+// 	if (navigator.appName == 'Microsoft Internet Explorer' || navigator.appName == 'Netscape' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1)){
+// 		jQuery('img').bicubicImgInterpolation({});
+// 	}
+// });
+

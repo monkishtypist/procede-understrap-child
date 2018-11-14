@@ -41,6 +41,16 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 			</main><!-- #main -->
 
+			<!-- <pre><?php print_r( get_post_meta( get_the_ID() ) ); ?></pre> -->
+
+			<?php
+
+			$partials = new Advanced_Custom_Fields_Partials( $container );
+
+			$partials->acf_partial_related_posts();
+
+			?>
+
 			<!-- Do the right sidebar check -->
 			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 

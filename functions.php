@@ -45,6 +45,7 @@ function cc_mime_types($mimes) {
 add_filter('upload_mimes', 'cc_mime_types');
 
 add_image_size( 'post_intro', 932, 311, true );
+add_image_size( 'post_card', 300, 173, true );
 
 function register_custom_nav_menus() {
     register_nav_menu( 'mobile', __( 'Mobile Menu', 'understrap' ) );
@@ -77,7 +78,7 @@ add_filter('the_content', 'remove_empty_p', 20, 1);
 /**
  * Theme setup and custom theme supports.
  */
-// require get_stylesheet_directory() . '/inc/setup.php';
+require get_stylesheet_directory() . '/inc/setup.php';
 
 /**
  * Register widget area.

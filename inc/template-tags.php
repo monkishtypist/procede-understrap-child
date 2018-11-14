@@ -57,11 +57,11 @@ if ( ! function_exists ( 'understrap_entry_footer' ) ) {
 				printf( '<span class="tags-links">' . esc_html__( 'Tagged: %1$s', 'understrap' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link( esc_html__( 'Leave a comment', 'understrap' ), esc_html__( '1 Comment', 'understrap' ), esc_html__( '% Comments', 'understrap' ) );
-			echo '</span>';
-		}
+		// if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		// 	echo '<span class="comments-link">';
+		// 	comments_popup_link( esc_html__( 'Leave a comment', 'understrap' ), esc_html__( '1 Comment', 'understrap' ), esc_html__( '% Comments', 'understrap' ) );
+		// 	echo '</span>';
+		// }
 		edit_post_link(
 			sprintf(
 				/* translators: %s: Name of current post */
