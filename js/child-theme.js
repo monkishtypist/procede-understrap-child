@@ -4142,5 +4142,7 @@
  };
 
  jQuery( document ).ready(function() {
+  if( !$('section.section-w-background-image').length ){
  		jQuery('img').bicubicImgInterpolation({});
+  }
  	});
