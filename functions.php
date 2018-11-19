@@ -144,3 +144,18 @@ require get_stylesheet_directory() . '/inc/class-procede-bootstrap-navwalker.php
  * Load Advanced Custom Fields Partials.
  */
 require get_stylesheet_directory() . '/inc/class-advanced-custom-fields-partials.php';
+
+/* 
+   Debug preview with custom fields 
+*/ 
+
+add_filter('_wp_post_revision_fields', 'add_field_debug_preview');
+function add_field_debug_preview($fields){
+   $fields["debug_preview"] = "debug_preview";
+   return $fields;
+}
+
+add_action( 'edit_form_after_title', 'add_input_debug_preview' );
+function add_input_debug_preview() {
+   echo '<input type="hidden" name="debug_preview" value="debug_preview">';
+}
